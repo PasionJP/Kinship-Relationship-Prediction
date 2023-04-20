@@ -40,10 +40,12 @@ from collections import defaultdict
 from sklearn.metrics import roc_auc_score
 from keras_vggface.utils import preprocess_input
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db_init(app)
+def create_app():
+    app = Flask(__name__)
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    db_init(app)
+    return app 
 
 APP_ROOT = os.path.dirname(os.path.abspath('__file__'))
 
