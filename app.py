@@ -1,6 +1,7 @@
 from flask import Flask, request, send_file
 import flask
 
+import os
 import numpy as np
 import pandas as pd
 import math
@@ -40,7 +41,7 @@ from sklearn.metrics import roc_auc_score
 from keras_vggface.utils import preprocess_input
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///img.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db_init(app)
 
