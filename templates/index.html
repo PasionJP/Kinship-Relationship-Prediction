@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="fileInput">
+    <form action = "/upload" method="post" enctype = "multipart/form-data" id="form1">
+        <div id="midCol">
+            <div id="dragger_wrapper">
+                <div class="drag-area">
+                    <div class="image">
+                        <img src="" alt="" id="uploadedImg">
+                    </div>
+                    <h3>Parent 1</h3>
+                    <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <header>Drag & Drop to Upload File</header>
+                    <span>OR</span>
+                    <div id="cancel-btn">
+                        <i class="fas fa-times"></i>
+                    </div> 
+                    <div class="file-name">
+                        File name here
+                    </div>
+                    <button type="button" onclick="defaultBtnActive1()" id="custom-btn">Browse File</button>
+                    <input id="default-btn" type="file" name="file1" hidden>
+                </div>
+            </div>
+    
+            <div id="dragger_wrapper">
+                <div class="drag-area">
+                    <div class="image">
+                        <img src="" alt="" id="uploadedImg">
+                    </div>
+                    <h3>Parent 2</h3>
+                    <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <header>Drag & Drop to Upload File</header>
+                    <span>OR</span>
+                    <div id="cancel-btn">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="file-name">
+                        File name here
+                    </div>
+                    <button type="button" onclick="defaultBtnActive2()" id="custom-btn">Browse File</button>
+                    <input id="default-btn" type="file" name="file2" hidden>
+                </div>
+            </div>
+    
+            <div id="dragger_wrapper">
+                <div class="drag-area">
+                    <div class="image">
+                        <img src="" alt="" id="uploadedImg">
+                    </div>
+                    <h3>Parent 3</h3>
+                    <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <header>Drag & Drop to Upload File</header>
+                    <span>OR</span>
+                    <div id="cancel-btn">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="file-name">
+                        File name here
+                    </div>
+                    <button type="button" onclick="defaultBtnActive3()" id="custom-btn">Browse File</button>
+                    <input id="default-btn" type="file" name="file3" hidden>
+                </div>
+            </div>
+            
+        </div>
+        {% block error %}
+        {% endblock %}
+        <div id="midCol">
+            <button type="submit" form="form1" value="Predict" class="submitBtn">SUBMIT</button>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+{% endblock %}

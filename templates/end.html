@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 id="midCol"> RESULT </h1>
+<div id="result">
+    <div id="dragger_wrapper">
+        <div id="dragger_result" align-items="center">
+            <div class="parent">
+                <div class="child child-1">
+                    <img src='{{ url_for("profile_image", ident = image_name1)}}' alt="parent" alt="mother" id="im">
+                </div>
+                <div class="child child-2">
+                    <img src='{{ url_for("profile_image", ident = image_name3)}}' alt="{{image_name3}}" alt="mother" id="im">
+                </div>
+            </div>
+            <h4 id="drag-text">Parent 1 - Child</h4>
+            <h4>{{pred1}}%</h4>
+        </div>
+    </div>
+
+    <div id="dragger_wrapper">
+            <div id="dragger_result" align-items="center">
+                <div class="parent">
+                    <div class="child child-1">
+                        <img src='{{ url_for("profile_image", ident = image_name2)}}' alt="{{image_name2}}" alt="mother" id="im">
+                    </div>
+                    <div class="child child-2">
+                        <img src='{{ url_for("profile_image", ident = image_name3)}}' alt="{{image_name3}}" alt="mother" id="im">
+                    </div>
+                </div>
+                <h4 id="drag-text">Parent 2 - Child</h4>
+                <h4>{{pred2}}%</h4>
+            </div>
+        </div>
+</div>
+{% endblock %}
