@@ -40,12 +40,10 @@ from collections import defaultdict
 from sklearn.metrics import roc_auc_score
 from keras_vggface.utils import preprocess_input
 
-def create_app():
-    app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    db_init(app)
-    return app 
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///img.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db_init(app)
 
 APP_ROOT = os.path.dirname(os.path.abspath('__file__'))
 
@@ -273,13 +271,13 @@ def removeHashname(fname):
     fnameChanged = fname + file_extension
     return fnameChanged
 
-@create_app.app.route('/')
-@create_app.app.route('/home')
+@app.route('/')
+@app.route('/home')
 def upload_image():
     return flask.render_template('index.html')
 
 
-@create_app.app.route('/upload', methods=['POST']) #POST will get the data and perform operatins
+@app.route('/upload', methods=['POST']) #POST will get the data and perform operatins
 # def findNgrokUrl():
 #     ngrok_tunnel1 = ngrok.connect()
 #     return ngrok_tunnel1
@@ -367,7 +365,7 @@ def post_image():
 
             return flask.render_template('end.html', image_name1=changeFilename(fname1), image_name2=changeFilename(fname2), image_name3=changeFilename(fname3), pred1=predictions[0], pred2=predictions[1])
     
-@create_app.app.route('/i/<ident>')
+@app.route('/i/<ident>')
 def profile_image(ident):
 
     img = Img.query.filter_by(name=ident).first()
@@ -379,4 +377,4 @@ def profile_image(ident):
 # if this is the main thread of execution first load the model and
 # then start the server
 if __name__ == "__main__":
-    create_app.app.run()
+    app.run()
